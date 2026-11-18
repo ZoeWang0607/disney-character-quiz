@@ -1,24 +1,30 @@
+import java.util.Locale;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 public class scannerFinal
 {
 public static void main (String[]args){
-    System.out.println("Hello, I'm your Disney assistant Boki. \nYou can ask me about the personalities, roles and types, brief plot, themes, unique styles,\nor recommendations for other works similar to a Disney character and his or her film.");
-    System.out.println("(I recommend you to choose from Cinderella, The Lion King, and The Little Mermaid since I know them best.)");
-    System.out.println("You can try to say things like personalities of Cinderella, or if you want to skip, you can say \"exit\"");
-    Part1();
-    System.out.println("OK, then would you like to match your personalities with Disney characters through a quiz of five questions? Let's start now!");
-    Part2();
-    System.out.println("Now, would you please answer my following queston? Let's start!");
-    Part3();
-    System.out.println("Do you wanna hear any Disney secrets or jokes? Yes? Tell me which!");
-    Part4();
+    try (Scanner input = new Scanner(System.in)) {
+        System.out.println("Hello, I'm your Disney assistant Boki. \nYou can ask me about the personalities, roles and types, brief plot, themes, unique styles,\nor recommendations for other works similar to a Disney character and his or her film.");
+        System.out.println("(I recommend you to choose from Cinderella, The Lion King, and The Little Mermaid since I know them best.)");
+        System.out.println("You can try to say things like personalities of Cinderella, or if you want to skip, you can say \"exit\"");
+        Part1(input);
+        System.out.println("OK, then would you like to match your personalities with Disney characters through a quiz of five questions? Let's start now!");
+        Part2(input);
+        System.out.println("Now, would you please answer my following queston? Let's start!");
+        Part3(input);
+        System.out.println("Do you wanna hear any Disney secrets or jokes? Yes? Tell me which!");
+        Part4(input);
+    } catch (NoSuchElementException endOfInput) {
+        System.out.println("\nGoodbye!");
+    }
 }
-public static void Part1(){
-    Scanner cs = new Scanner(System.in);
+private static void Part1(Scanner input){
+
     String b = "";
     while(true){
-    String a = cs.nextLine();
-    b = a.toLowerCase();
+    String a = input.nextLine();
+    b = a.trim().toLowerCase(Locale.ROOT);
     if (b.contains("exit"))  {
         System.out.println("OK, let's move on!");
         break;
@@ -112,37 +118,37 @@ public static void Part1(){
     }
     System.out.println("Now, you can try another question. I'm happy to answer you! Or, you can type in \"exit\" to try other functions I have.");
     }
-    cs.close();
+
 }
-public static void Part2(){
+private static void Part2(Scanner input){
     String c = "";
     
     while(true){
     System.out.println("1. Which core Disney theme do you prefer most?\nA. Classic Animated Films (e.g. Snow White)\nB. Marvel Universe (Disney-owned superheroes)");
-    Scanner Answ1 = new Scanner(System.in);
-    String Ans1 = Answ1.nextLine();
-    String ans1 = Ans1.toLowerCase();
-    if(ans1.contains("a")){
+
+    String Ans1 = input.nextLine();
+    String ans1 = Ans1.trim().toLowerCase(Locale.ROOT);
+    if(ans1.equals("a")){
     c = c + "a";
         while(true){
         System.out.println("2. Do you prefer:\nA. Princesses (e.g. Snow White, Elsa, Jasmine)\nB. Princes (e.g. Prince Charming, Simba, Aladdin)");
-    Scanner Answ2 = new Scanner(System.in);
-    String Ans2 = Answ2.nextLine();
-    String ans2 = Ans2.toLowerCase();
-        if(ans2.contains("a")){c = c + "a";break;}
-        else if(ans2.contains("b")){c = c + "b";break;}
+
+    String Ans2 = input.nextLine();
+    String ans2 = Ans2.trim().toLowerCase(Locale.ROOT);
+        if(ans2.equals("a")){c = c + "a";break;}
+        else if(ans2.equals("b")){c = c + "b";break;}
         else{System.out.println("Please type in \"A\" or \"B\" to make a choice. Try again.");}
     }
     break;}
-    else if(ans1.contains("b")){
+    else if(ans1.equals("b")){
     c = c + "b";
         while(true){
         System.out.println("2. Which type of Marvel superhero do you like most?\nA. Tech-Savvy Geniuses (e.g. Iron Man, Shuri)\nB. Super-Strong Protectors (e.g. Captain America, Thor)");
-    Scanner Answ2 = new Scanner(System.in);
-    String Ans2 = Answ2.nextLine();
-    String ans2 = Ans2.toLowerCase();
-        if(ans2.contains("a")){c = c + "a";break;}
-        else if(ans2.contains("b")){c = c + "b";break;}
+
+    String Ans2 = input.nextLine();
+    String ans2 = Ans2.trim().toLowerCase(Locale.ROOT);
+        if(ans2.equals("a")){c = c + "a";break;}
+        else if(ans2.equals("b")){c = c + "b";break;}
         else{System.out.println("Please type in \"A\" or \"B\" to make a choice. Try again.");}
     }
     break;}
@@ -151,31 +157,31 @@ public static void Part2(){
     
     while(true){
     System.out.println("3. What is your gender?\nA. Female\nB. Male");
-    Scanner Answ3 = new Scanner(System.in);
-    String Ans3 = Answ3.nextLine();
-    String ans3 = Ans3.toLowerCase();
-    if(ans3.contains("a")){c = c + "a";break;}
-        else if(ans3.contains("b")){c = c + "b";break;}
+
+    String Ans3 = input.nextLine();
+    String ans3 = Ans3.trim().toLowerCase(Locale.ROOT);
+    if(ans3.equals("a")){c = c + "a";break;}
+        else if(ans3.equals("b")){c = c + "b";break;}
         else{System.out.println("Please type in \"A\" or \"B\" to make a choice. Try again.");}
     }
     
     while(true){
     System.out.println("4. What is your birth month?\nA. Jan–June\nB. Jul–Dec");
-    Scanner Answ4 = new Scanner(System.in);
-    String Ans4 = Answ4.nextLine();
-    String ans4 = Ans4.toLowerCase();
-    if(ans4.contains("a")){c = c + "a";break;}
-        else if(ans4.contains("b")){c = c + "b";break;}
+
+    String Ans4 = input.nextLine();
+    String ans4 = Ans4.trim().toLowerCase(Locale.ROOT);
+    if(ans4.equals("a")){c = c + "a";break;}
+        else if(ans4.equals("b")){c = c + "b";break;}
         else{System.out.println("Please type in \"A\" or \"B\" to make a choice. Try again.");}
     }
     
     while(true){
     System.out.println("5. Which traits best describe your personality?\nA. Outgoing & energetic\nB. Introverted & delicate");
-    Scanner Answ5 = new Scanner(System.in);
-    String Ans5 = Answ5.nextLine();
-    String ans5 = Ans5.toLowerCase();
-    if(ans5.contains("a")){c = c + "a";break;}
-        else if(ans5.contains("b")){c = c + "b";break;}
+
+    String Ans5 = input.nextLine();
+    String ans5 = Ans5.trim().toLowerCase(Locale.ROOT);
+    if(ans5.equals("a")){c = c + "a";break;}
+        else if(ans5.equals("b")){c = c + "b";break;}
         else{System.out.println("Please type in \"A\" or \"B\" to make a choice. Try again.");}
     }
     
@@ -218,32 +224,32 @@ public static void Part2(){
     else{System.out.println("Result: Iron Man \nYour brilliant mind and rebellious spirit reflect Iron Man’s journey—transforming flaws into strength, wielding genius not just for yourself, but to shield the world.");}
     }
 }
-public static void Part3(){
+private static void Part3(Scanner input){
     System.out.println("Which Disney focus area interests you most?");
-    Scanner cs1 = new Scanner(System.in);
-    String d = cs1.nextLine();
-    String e = d.toLowerCase();
+
+    String d = input.nextLine();
+    String e = d.trim().toLowerCase(Locale.ROOT);
     if(e.contains("independent princesses’ growth journeys")){System.out.println("Ah, you love empowering stories—think Moana’s bravery or Elsa’s self-discovery, where crowns aren’t just worn but earned!");}
     else if(e.contains("marvel superheroes’ action and teamwork")){System.out.println("High-stakes battles and squad goals! From the Avengers to the Guardians, you’re all about epic collabs and saving the universe.");}
     else if(e.contains("live-action fantasy films’ musical magic")){System.out.println("You crave enchanting melodies—where Beauty and the Beast’s ballrooms or Aladdin’s rhythms make fantasy feel real!");}
     else{System.out.println("ooh, fresh Disney magic! Whether it’s Pixar’s heartwarming tales, classic villains’ schemes, or even theme park lore—you’ve got a whole new realm to explore!");}
-    cs1.close();
+
     
     System.out.println("Who is your favourite Disney character? ");
-    Scanner cs2 = new Scanner(System.in);
-    String f = cs2.nextLine();
-    String g = f.toLowerCase();
+
+    String f = input.nextLine();
+    String g = f.trim().toLowerCase(Locale.ROOT);
     if(g.contains("donald duck")){System.out.println("A classic choice! His fiery temper and big heart make every squawk-filled adventure unforgettable—plus, he’s got the best sailor outfit in Disney history!");}
     else if(g.contains("elsa")){System.out.println("Queen of ice and self-discovery! You’re drawn to her emotional depth (and that Let It Go power ballad—admit it).");}
     else if(g.contains("buzz lightyear")){System.out.println("To infinity and beyond! You love his heroic swagger and the toy-sized lessons on bravery (and humility).");}
     else{System.out.println("Ah, a Disney fan after my own heart! Whether you love the mischievous charm of a sidekick, the quiet wisdom of an unsung hero, or even a villain’s magnetic complexity—your pick reveals a spark of magic (and maybe a hint of your own personality!)");}
-    cs2.close();
+
 }
-public static void Part4(){
-    Scanner cs = new Scanner(System.in);
+private static void Part4(Scanner input){
+
     while(true){
-    String q = cs.nextLine();
-    String w = q.toLowerCase();
+    String q = input.nextLine();
+    String w = q.trim().toLowerCase(Locale.ROOT);
     if (w.contains("exit"))  {
         System.out.println("Goodbye! Have a magical day!");
         break;
@@ -273,6 +279,6 @@ public static void Part4(){
     else{System.out.print("Sorry, please specify what you wanna hear about. You can enter \"joke\" or \"secret\".");}
     System.out.println("Wanna try another one? Or you can type in \"exit\" to end the conversation.");
     }
-    cs.close();
+
 }
 }
